@@ -26,7 +26,9 @@ warnings.filterwarnings('ignore')
 import logging
 from datetime import datetime
 import time
-
+import pickle
+from src.exception import CustomException
+from src.logger import logging
 
 
 def EDA(df,label):
@@ -280,5 +282,16 @@ def compare_classification_model(train_X,train_Y,test_X,test_Y,classifiers_list,
 
 
 
+def save_object(file_path, obj):
+    try:
+        dir_path = os.path.dirname(file_path)
+
+        os.makedirs(dir_path, exist_ok=True)
+
+        with open(file_path, "wb") as file_obj:
+            pickle.dump(obj, file_obj)
+
+    except Exception as e:
+        raise CustomException(e, sys)
 
 
