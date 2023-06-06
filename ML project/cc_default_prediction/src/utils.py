@@ -18,7 +18,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier 
 from sklearn.ensemble import AdaBoostClassifier 
 from sklearn.naive_bayes import GaussianNB
-import xgboost
+#import xgboost
 from sklearn import metrics
 from sklearn.metrics import accuracy_score,recall_score,confusion_matrix,precision_score,roc_auc_score
 import warnings
@@ -194,8 +194,8 @@ def compare_classification_model(train_X,train_Y,test_X,test_Y,classifiers_list,
         from sklearn.ensemble import RandomForestClassifier 
         from sklearn.ensemble import AdaBoostClassifier 
         from sklearn.naive_bayes import GaussianNB
-        import xgboost
-        from xgboost import XGBClassifier
+        #import xgboost
+        #from xgboost import XGBClassifier
         from sklearn import metrics
         from sklearn.metrics import accuracy_score,recall_score,confusion_matrix,precision_score,roc_auc_score
         import warnings
@@ -293,5 +293,22 @@ def save_object(file_path, obj):
 
     except Exception as e:
         raise CustomException(e, sys)
+    
+
+def predict_result(array):
+    if array>0.26:
+        return 'Customer is risky'
+    else:
+        return 'Customer is not risky'    
+    
+
+def load_object(file_path):
+    try:
+        with open(file_path,'rb') as file_obj:
+            return pickle.load(file_obj)
+    except Exception as e:
+        logging.info('Exception Occured in load_object function utils')
+        raise CustomException(e,sys)
+
 
 
