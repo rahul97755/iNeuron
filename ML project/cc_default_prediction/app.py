@@ -3,6 +3,8 @@ from flask import Flask,render_template,request
 from src.pipeline.prediction_pipeline import CustomData,PredictPipeline
 from src.components.data_transformation import DataModifier
 
+
+
 app=Flask(__name__)
 @app.route('/')
 
